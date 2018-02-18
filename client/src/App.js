@@ -7,21 +7,28 @@ import API from './utils/API';
 
 class App extends Component {
   state = {
+    search: {
+      topic: ""
+    },
     articles: []
   }
 
-  //Adjust later for array of articles
-  componentDidMount(){
-    API.getArticles()
-      .then((res) => this.setState({ articles: [res.data] }))
-      .catch((err) => console.log(err));
+  handleInputChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      search: {
+        ...this.state.search,
+       [name]: value
+       
+      }
+    });
   }
-  
+
   render() {
     return (
       <div>
         <Header />
-        <SearchPage />
+        <SearchPage handleInputChange={this.handleInputChange} />
         <ResultsPage articles={this.state.articles} />
         <p>This is my awesome bullshit component</p>
       </div>
