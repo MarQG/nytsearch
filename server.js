@@ -18,9 +18,7 @@ app.use(bodyParser({ extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send('Hello to my route');
-});
+app.use(express.static('client/build'));
 
 require('./routes/api')(app);
 

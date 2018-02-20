@@ -4,7 +4,6 @@ const Articles = require('../models/articles');
 
 module.exports = (app) => {
     app.post('/api/nytimes', (req, res) => {
-        console.log(req.body);
         request.get({
             url: "https://api.nytimes.com/svc/search/v2/articlesearch.json",
             qs: {
@@ -18,7 +17,6 @@ module.exports = (app) => {
             body = JSON.parse(body);            
             const validKeys = [ 'web_url', 'snippet', 'pub_date'];
             const filteredResults = body.response.docs.map( doc => filterObj(doc, validKeys));
-            console.log(filteredResults);
             res.json(filteredResults);
           });
     });

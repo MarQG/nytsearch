@@ -44,7 +44,6 @@ class App extends Component {
       && this.state.search.start_date.match(/([12]\d{3}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01]))/) 
       && this.state.search.end_date.match(/([12]\d{3}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01]))/) 
     ){
-      console.log("We have submitted the form");
       API.getNytArticles(this.state.search).then( res => this.setState({ articles: res.data }));
     } else {
       this.setState({ error: `Please check that your start and end dates. They must be in YYYYMMDD format.`});
@@ -64,8 +63,6 @@ class App extends Component {
   }
 
   handleDeleteSavedArticle = (id) => {
-    console.log('handleDeleteSavedArticle');
-    console.log(id);
     API.deleteSavedArticle(id).then(res => {
       if(res.data.success){
         this.setState({ savedArticles: this.state.savedArticles.filter(article => article._id !== id), success: res.data.success});
