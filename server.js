@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 mongoose.Promise = require('bluebird');
 
@@ -21,7 +22,7 @@ app.use(cors());
 app.use(express.static('client/build'));
 
 app.get('*', (req, res) => {
-    res.sendFile("index.html");
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 })
 
 require('./routes/api')(app);
