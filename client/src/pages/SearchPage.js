@@ -4,7 +4,7 @@ import SearchForm from '../components/SearchForm';
 
 const SearchPage = (props) =>(
     <PagePanel name={`Search`}>
-        <SearchForm handleInputChange={props.handleInputChange}/>
+        <SearchForm handleInputChange={props.handleInputChange} handleOnSubmit={props.handleOnSubmit}/>
     </PagePanel>
 );
 

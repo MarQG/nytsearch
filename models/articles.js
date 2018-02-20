@@ -6,11 +6,7 @@ const articlesSchema = mongoose.Schema({
         unique: true
     },
     url: String,
-    date:{
-        type: Date,
-        default: Date.now
-    },
-    saved: Boolean
+    date: String
 });
 
 module.exports = mongoose.model("Articles", articlesSchema);
